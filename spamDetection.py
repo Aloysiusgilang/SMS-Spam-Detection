@@ -1,6 +1,8 @@
 from textColors import bcolors
 from BM import BM
 from KMP import KMP
+import time
+
 
 adsSpam = open("adsSpam.txt", "r")
 pornSpam = open("pornSpam.txt", "r")
@@ -41,6 +43,9 @@ messageToken = [word.lower() for word in messageToken]
 # stopword removal
 messageToken = [word for word in messageToken if word not in stopwordsList]
 
+start_time = time.time()
+
+
 # spam detection
 if algorithm == 1:
     print('\n');
@@ -73,13 +78,16 @@ if algorithm == 1:
     elif adsSpamCount > pornSpamCount and adsSpamCount > virusSpamCount:
         print(bcolors.BOLD +bcolors.FAIL+ "Spam Detected" + bcolors.ENDC +  bcolors.ENDC)
         print(bcolors.WARNING +"Category : Ads Spam" + bcolors.ENDC)
+        print(bcolors.WARNING +"Spam word count : " +str(adsSpamCount)+ bcolors.ENDC)
     elif pornSpamCount > adsSpamCount and pornSpamCount > virusSpamCount:
         print(bcolors.BOLD +bcolors.FAIL+ "Spam Detected" + bcolors.ENDC +  bcolors.ENDC)
         print(bcolors.WARNING +"Category : Porn Spam" + bcolors.ENDC)
+        print(bcolors.WARNING +"Spam word count : " +str(pornSpamCount)+ bcolors.ENDC)
 
     elif virusSpamCount > adsSpamCount and virusSpamCount > pornSpamCount:
         print(bcolors.BOLD +bcolors.FAIL+ "Spam Detected" + bcolors.ENDC +  bcolors.ENDC)
         print(bcolors.WARNING +"Category : Virus Scam Spam" + bcolors.ENDC)
+        print(bcolors.WARNING +"Spam word count : " + str(virusSpamCount)+ bcolors.ENDC)
 
 
 else :
@@ -116,15 +124,18 @@ else :
     elif adsSpamCount > pornSpamCount and adsSpamCount > virusSpamCount:
         print(bcolors.BOLD +bcolors.FAIL+ "Spam Detected" + bcolors.ENDC +  bcolors.ENDC)
         print(bcolors.WARNING +"Category : Ads Spam" + bcolors.ENDC)
+        print(bcolors.WARNING +"Spam word count : " +str(adsSpamCount)+ bcolors.ENDC)
     elif pornSpamCount > adsSpamCount and pornSpamCount > virusSpamCount:
         print(bcolors.BOLD +bcolors.FAIL+ "Spam Detected" + bcolors.ENDC +  bcolors.ENDC)
         print(bcolors.WARNING +"Category : Porn Spam" + bcolors.ENDC)
+        print(bcolors.WARNING +"Spam word count : " +str(pornSpamCount)+ bcolors.ENDC)
 
     elif virusSpamCount > adsSpamCount and virusSpamCount > pornSpamCount:
         print(bcolors.BOLD +bcolors.FAIL+ "Spam Detected" + bcolors.ENDC +  bcolors.ENDC)
         print(bcolors.WARNING +"Category : Virus Scam Spam" + bcolors.ENDC)
+        print(bcolors.WARNING +"Spam word count : " +str(virusSpamCount)+ bcolors.ENDC)
 
-
+print("execution time : %s seconds " % (time.time() - start_time))
 
 
 
